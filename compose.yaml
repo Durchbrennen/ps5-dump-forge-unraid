@@ -1,0 +1,21 @@
+services:
+  forge:
+    image: ${FORGE_IMAGE:-ps5-dump-forge:local}
+    build:
+      context: .
+      args:
+        FORGE_VERSION: "0.5.6"
+    container_name: ps5-dump-forge
+    user: "99:100"
+    ports:
+      - "8095:8095"
+    volumes:
+      - /mnt/user/appdata/ps5-dump-forge-docker:/config
+      - /mnt/user/backup2:/games
+    restart: unless-stopped
+    stop_grace_period: 60s
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"

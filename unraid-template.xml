@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>ps5-dump-forge</Name>
+  <Repository>ps5-dump-forge:local</Repository>
+  <Registry>https://github.com/quer3q/ps5-dump-forge</Registry>
+  <Network>bridge</Network>
+  <Privileged>false</Privileged>
+  <Overview>PS5 Dump Forge Web UI. Set Repository to your published ghcr.io/OWNER/REPOSITORY:latest image to receive image updates.</Overview>
+  <WebUI>http://[IP]:[PORT:8095]/</WebUI>
+  <ExtraParams>--user=99:100 --stop-timeout=60</ExtraParams>
+  <Config Name="Web port" Target="8095" Default="8095" Mode="tcp" Description="Forge Web UI" Type="Port" Display="always" Required="true" Mask="false">8095</Config>
+  <Config Name="Persistent settings" Target="/config" Default="/mnt/user/appdata/ps5-dump-forge-docker" Mode="rw" Description="Owned by nobody:users" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/ps5-dump-forge-docker</Config>
+  <Config Name="Games" Target="/games" Default="/mnt/user/backup2" Mode="rw" Description="Game source and output share" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/backup2</Config>
+</Container>
